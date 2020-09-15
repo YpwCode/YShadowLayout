@@ -1,8 +1,630 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <com.ypw.code.view.title.YTitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:tbar_bg="#ffffff00"
+        app:tbar_centerStr="包含侵入状态栏-颜色"
+        app:tbar_rightShow="true"
+        app:tbar_rightStr="123" />
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorAccent"
+            app:shadow_color="@color/colorPrimary"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_50">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:text="默认状态"
+                android:textColor="@color/white" />
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorPrimary"
+            app:shadow_color="#FF0000"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5"
+            app:shadow_showLeftShadow="false"
+            app:shadow_showTopShadow="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:text="隐藏左 / 右 / 上"
+                android:textColor="@color/white" />
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorAccent"
+            app:shadow_color="@color/colorPrimary"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5"
+            app:shadow_shadowOffsetX="@dimen/sw_10"
+            app:shadow_shadowOffsetY="@dimen/sw_10">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:text="偏移 X / Y"
+                android:textColor="@color/white" />
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorAccent"
+            app:shadow_color="@color/colorPrimary"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="默认状态"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorPrimary"
+            app:shadow_color="#FF0000"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5"
+            app:shadow_showTopShadow="false"
+            app:shadow_showLeftShadow="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="隐藏左 / 右 / 上"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorAccent"
+            app:shadow_color="@color/colorPrimary"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5"
+            app:shadow_shadowOffsetX="@dimen/sw_10"
+            app:shadow_shadowOffsetY="@dimen/sw_10" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="偏移 X / Y"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorAccent"
+            app:shadow_color="@color/colorPrimary"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="默认状态"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorPrimary"
+            app:shadow_color="#FF0000"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5"
+            app:shadow_showTopShadow="false"
+            app:shadow_showLeftShadow="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="隐藏左 / 右 / 上"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorAccent"
+            app:shadow_color="@color/colorPrimary"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5"
+            app:shadow_shadowOffsetX="@dimen/sw_10"
+            app:shadow_shadowOffsetY="@dimen/sw_10" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="偏移 X / Y"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorAccent"
+            app:shadow_color="@color/colorPrimary"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="默认状态"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorPrimary"
+            app:shadow_color="#FF0000"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5"
+            app:shadow_showTopShadow="false"
+            app:shadow_showLeftShadow="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="隐藏左 / 右 / 上"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorAccent"
+            app:shadow_color="@color/colorPrimary"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5"
+            app:shadow_shadowOffsetX="@dimen/sw_10"
+            app:shadow_shadowOffsetY="@dimen/sw_10" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="偏移 X / Y"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorAccent"
+            app:shadow_color="@color/colorPrimary"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="默认状态"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorPrimary"
+            app:shadow_color="#FF0000"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5"
+            app:shadow_showTopShadow="false"
+            app:shadow_showLeftShadow="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="隐藏左 / 右 / 上"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorAccent"
+            app:shadow_color="@color/colorPrimary"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5"
+            app:shadow_shadowOffsetX="@dimen/sw_10"
+            app:shadow_shadowOffsetY="@dimen/sw_10" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="偏移 X / Y"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorAccent"
+            app:shadow_color="@color/colorPrimary"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="默认状态"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorPrimary"
+            app:shadow_color="#FF0000"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5"
+            app:shadow_showTopShadow="false"
+            app:shadow_showLeftShadow="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="隐藏左 / 右 / 上"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorAccent"
+            app:shadow_color="@color/colorPrimary"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5"
+            app:shadow_shadowOffsetX="@dimen/sw_10"
+            app:shadow_shadowOffsetY="@dimen/sw_10" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="偏移 X / Y"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorAccent"
+            app:shadow_color="@color/colorPrimary"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="默认状态"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorPrimary"
+            app:shadow_color="#FF0000"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5"
+            app:shadow_showTopShadow="false"
+            app:shadow_showLeftShadow="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="隐藏左 / 右 / 上"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorAccent"
+            app:shadow_color="@color/colorPrimary"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5"
+            app:shadow_shadowOffsetX="@dimen/sw_10"
+            app:shadow_shadowOffsetY="@dimen/sw_10" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="偏移 X / Y"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorAccent"
+            app:shadow_color="@color/colorPrimary"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="默认状态"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorPrimary"
+            app:shadow_color="#FF0000"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5"
+            app:shadow_showTopShadow="false"
+            app:shadow_showLeftShadow="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="隐藏左 / 右 / 上"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorAccent"
+            app:shadow_color="@color/colorPrimary"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5"
+            app:shadow_shadowOffsetX="@dimen/sw_10"
+            app:shadow_shadowOffsetY="@dimen/sw_10" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="偏移 X / Y"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorAccent"
+            app:shadow_color="@color/colorPrimary"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="默认状态"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorPrimary"
+            app:shadow_color="#FF0000"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5"
+            app:shadow_showTopShadow="false"
+            app:shadow_showLeftShadow="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="隐藏左 / 右 / 上"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+        <com.ypw.code.view.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_10"
+            app:shadow_bgColor="@color/colorAccent"
+            app:shadow_color="@color/colorPrimary"
+            app:shadow_limit="@dimen/sw_10"
+            app:shadow_radius="@dimen/sw_5"
+            app:shadow_shadowOffsetX="@dimen/sw_10"
+            app:shadow_shadowOffsetY="@dimen/sw_10" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sw_80"
+                android:layout_marginEnd="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_5"
+                android:layout_marginBottom="@dimen/sw_5"
+                android:textColor="@color/white"
+                android:text="偏移 X / Y"/>
+
+        </com.ypw.code.view.ShadowLayout>
+
+    </LinearLayout>
+
+</ScrollView>
