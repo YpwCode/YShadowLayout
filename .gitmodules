@@ -1,0 +1,3 @@
+[submodule "GradleConfigs"]
+	path = GradleConfigs
+	url = git@gitlab.com:Ypw-Codes1402A/GradleConfigs.git

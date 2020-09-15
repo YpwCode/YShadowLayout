@@ -1,0 +1,3 @@
+rootProject.name = "TempProject"
+include ':lib'
+include ':app'

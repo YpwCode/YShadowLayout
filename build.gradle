@@ -1,0 +1,36 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    apply from: "$rootDir/GradleConfigs/configs.gradle"
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath depPlugins.gradlePlugin
+        classpath depPlugins.kotlinPlugin
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven {
+            // 可以有且仅有一个仓库不指定 name 属性，会隐式设置为 Maven
+            url = "http://localhost:8081/repository/maven-releases/"
+            // 仓库用户名密码
+            credentials {
+                username = MavenUsername
+                password = MavenPassword
+            }
+        }
+
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
