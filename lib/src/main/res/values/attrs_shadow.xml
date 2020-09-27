@@ -6,6 +6,7 @@
         <attr name="shadow_showTopShadow" format="boolean" />
         <attr name="shadow_showBottomShadow" format="boolean" />
         <attr name="shadow_radius" format="dimension" />
+        <attr name="shadow_circle" format="boolean" />
         <attr name="shadow_leftTopRadius" format="dimension" />
         <attr name="shadow_rightTopRadius" format="dimension" />
         <attr name="shadow_leftBottomRadius" format="dimension" />
@@ -15,5 +16,22 @@
         <attr name="shadow_shadowOffsetY" format="dimension" />
         <attr name="shadow_color" format="color" />
         <attr name="shadow_bgColor" format="color" />
+        <attr name="shadow_marginLeft" format="dimension" />
+        <attr name="shadow_marginRight" format="dimension" />
+        <attr name="shadow_marginTop" format="dimension" />
+        <attr name="shadow_marginBottom" format="dimension" />
+        <attr name="shadow_bgUseGradient" format="boolean" />
+        <attr name="shadow_bgGradientStartColor" format="color" />
+        <attr name="shadow_bgGradientEndColor" format="color" />
+        <attr name="shadow_bgGradientAngle" format="enum" >
+            <enum name="a0" value="0" />
+            <enum name="a45" value="45" />
+            <enum name="a90" value="90" />
+            <enum name="a135" value="135" />
+            <enum name="a180" value="180" />
+            <enum name="a225" value="225" />
+            <enum name="a270" value="270" />
+            <enum name="a315" value="315" />
+        </attr>
     </declare-styleable>
 </resources>
