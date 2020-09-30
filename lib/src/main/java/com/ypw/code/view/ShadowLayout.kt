@@ -4,14 +4,23 @@ import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.util.AttributeSet
+import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 
 /**
- * 原库地址：https://github.com/lihangleo2/ShadowLayout
+ * *************************
+ * Ypw
+ * ypwcode@163.com 
+ * 2020/9/30 9:54 AM
+ * -------------------------
+ * 参考: https://github.com/lihangleo2/ShadowLayout
  * 阴影控件
+ * *************************
  */
 class ShadowLayout(context: Context, attrs: AttributeSet? = null) : FrameLayout(context, attrs) {
+
+    private val xfermode: Xfermode = PorterDuffXfermode(PorterDuff.Mode.DST_IN)
 
     private var mBgColor = 0
     private var mShadowColor = 0
@@ -27,6 +36,11 @@ class ShadowLayout(context: Context, attrs: AttributeSet? = null) : FrameLayout(
     private var mShadowMarginRight = 0f
     private var mShadowMarginTop = 0f
     private var mShadowMarginBottom = 0f
+
+    private var mLeftTopRadius = 0f
+    private var mLeftBottomRadius = 0f
+    private var mRightTopRadius = 0f
+    private var mRightBottomRadius = 0f
 
     private var mUseGradient = false
     private var mGradientStartColor = 0
@@ -52,6 +66,14 @@ class ShadowLayout(context: Context, attrs: AttributeSet? = null) : FrameLayout(
             isAntiAlias = true
             style = Paint.Style.FILL
             color = mBgColor
+        }
+    }
+
+    private val mTranPaint by lazy {
+        Paint().apply {
+            isAntiAlias = true
+            style = Paint.Style.FILL
+            color = Color.TRANSPARENT
         }
     }
 
@@ -120,6 +142,22 @@ class ShadowLayout(context: Context, attrs: AttributeSet? = null) : FrameLayout(
         LinearGradient(x0, y0, x1, y1, mGradientStartColor, mGradientEndColor, Shader.TileMode.CLAMP)
     }
 
+    private val mRadii: FloatArray by lazy {
+        floatArrayOf(
+                mLeftTopRadius, mLeftTopRadius,
+                mRightTopRadius, mRightTopRadius,
+                mRightBottomRadius, mRightBottomRadius,
+                mLeftBottomRadius, mLeftBottomRadius
+        )
+    }
+
+    private val mPath = Path()
+
+    private var ol = 0
+    private var or = 0
+    private var ot = 0
+    private var ob = 0
+
     init {
         if (attrs != null) {
             val array = getContext().obtainStyledAttributes(attrs, R.styleable.ShadowLayout)
@@ -127,7 +165,12 @@ class ShadowLayout(context: Context, attrs: AttributeSet? = null) : FrameLayout(
             mShowRightShadow = array.getBoolean(R.styleable.ShadowLayout_shadow_showRightShadow, true)
             mShowBottomShadow = array.getBoolean(R.styleable.ShadowLayout_shadow_showBottomShadow, true)
             mShowTopShadow = array.getBoolean(R.styleable.ShadowLayout_shadow_showTopShadow, true)
-            mRadius = array.getDimension(R.styleable.ShadowLayout_shadow_radius, 10f)
+            mRadius = array.getDimension(R.styleable.ShadowLayout_shadow_radius, 0f)
+            mCircle = array.getBoolean(R.styleable.ShadowLayout_shadow_circle, false)
+            mLeftTopRadius = array.getDimension(R.styleable.ShadowLayout_shadow_leftTopRadius, 10f)
+            mLeftBottomRadius = array.getDimension(R.styleable.ShadowLayout_shadow_leftBottomRadius, 10f)
+            mRightTopRadius = array.getDimension(R.styleable.ShadowLayout_shadow_rightTopRadius, 10f)
+            mRightBottomRadius = array.getDimension(R.styleable.ShadowLayout_shadow_rightBottomRadius, 10f)
             mShadowLength = array.getDimension(R.styleable.ShadowLayout_shadow_limit, 10f)
             mShadowOffsetX = array.getDimension(R.styleable.ShadowLayout_shadow_shadowOffsetX, 0f)
             mShadowOffsetY = array.getDimension(R.styleable.ShadowLayout_shadow_shadowOffsetY, 0f)
@@ -141,52 +184,58 @@ class ShadowLayout(context: Context, attrs: AttributeSet? = null) : FrameLayout(
             mGradientStartColor = array.getColor(R.styleable.ShadowLayout_shadow_bgGradientStartColor, 0)
             mGradientEndColor = array.getColor(R.styleable.ShadowLayout_shadow_bgGradientEndColor, 0)
             mGradientAngle = array.getInt(R.styleable.ShadowLayout_shadow_bgGradientAngle, 0)
-            mCircle = array.getBoolean(R.styleable.ShadowLayout_shadow_circle, false)
             array.recycle()
+
+            if (mRadius > 0) {
+                mLeftTopRadius = mRadius
+                mLeftBottomRadius = mRadius
+                mRightTopRadius = mRadius
+                mRightBottomRadius = mRadius
+            }
         }
         onInit()
         setWillNotDraw(false)
+        setLayerType(View.LAYER_TYPE_SOFTWARE, null)
     }
 
-    private var ol = 0f
-    private var or = 0f
-    private var ot = 0f
-    private var ob = 0f
-
     private fun onInit() {
+        var tempOl = mShadowOffsetX
+        var tempOt = mShadowOffsetY
+        var tempOr = mShadowOffsetX
+        var tempOb = mShadowOffsetY
 
-        ol = mShadowOffsetX
-        ot = mShadowOffsetY
-        or = mShadowOffsetX
-        ob = mShadowOffsetY
+        tempOl += if (mShowLeftShadow) {
+            mShadowLength
+        } else {
+            0f
+        }
+        tempOr += if (mShowRightShadow) {
+            mShadowLength
+        } else {
+            0f
+        }
+        tempOt += if (mShowTopShadow) {
+            mShadowLength
+        } else {
+            0f
+        }
+        tempOb += if (mShowBottomShadow) {
+            mShadowLength
+        } else {
+            0f
+        }
 
-        ol += if (mShowLeftShadow) {
-            mShadowLength
-        } else {
-            0f
-        }
-        or += if (mShowRightShadow) {
-            mShadowLength
-        } else {
-            0f
-        }
-        ot += if (mShowTopShadow) {
-            mShadowLength
-        } else {
-            0f
-        }
-        ob += if (mShowBottomShadow) {
-            mShadowLength
-        } else {
-            0f
-        }
+        ol = tempOl.toInt()
+        or = tempOr.toInt()
+        ot = tempOt.toInt()
+        ob = tempOb.toInt()
 
         val pl = paddingLeft + ol
         val pt = paddingTop + ot
         val pr = paddingRight + or
         val pb = paddingBottom + ob
 
-        setPadding(pl.toInt(), pt.toInt(), pr.toInt(), pb.toInt())
+        setPadding(pl, pt, pr, pb)
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -232,20 +281,48 @@ class ShadowLayout(context: Context, attrs: AttributeSet? = null) : FrameLayout(
             height = child.measuredHeight + lp.topMargin + lp.bottomMargin + paddingTop + paddingBottom
         }
         setMeasuredDimension(width, height)
+
+        mBgRect.set(ol.toFloat(), ot.toFloat(), width - or.toFloat(), height - ob.toFloat())
     }
 
+    /**
+     * childView 圆角限制
+     */
+    override fun drawChild(canvas: Canvas, child: View?, drawingTime: Long): Boolean {
+        val count = canvas.saveLayer(null, null, Canvas.ALL_SAVE_FLAG)
+
+        val b = super.drawChild(canvas, child, drawingTime)
+
+        mPath.reset()
+        mPath.addRect(mBgRect, Path.Direction.CCW)
+        mPath.addRoundRect(mBgRect, mRadii, Path.Direction.CW)
+        mTranPaint.xfermode = xfermode
+        canvas.drawPath(mPath, mTranPaint)
+        mTranPaint.xfermode = null
+
+        canvas.restoreToCount(count)
+        return b
+    }
+
+    /**
+     * 画 bg
+     */
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         if (mUseGradient) {
             mBgPaint.shader = mShaderGradient
         }
-        mBgRect.set(ol, ot, width - or, height - ob)
-        val tempRadius = if (mCircle) {
-            mBgRect.height() / 2
+
+        if (mCircle) {
+            updateRadii(radius = mBgRect.height() / 2)
         } else {
-            Math.min(mBgRect.height() / 2, mRadius)
+            val minRadius = Math.min(mBgRect.width(), mBgRect.height())
+            updateRadii(minRadius = minRadius / 2)
         }
-        canvas.drawRoundRect(mBgRect, tempRadius, tempRadius, mBgPaint)
+
+        mPath.reset()
+        mPath.addRoundRect(mBgRect, mRadii, Path.Direction.CCW)
+        canvas.drawPath(mPath, mBgPaint)
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -303,13 +380,63 @@ class ShadowLayout(context: Context, attrs: AttributeSet? = null) : FrameLayout(
 
         // * 0.8 避免边缘出现明显分界线
         mShadowPaint.setShadowLayer(mShadowLength / 4 * 0.8f, dx, dy, mShadowColor)
-        val tempRadius = if (mCircle) {
-            mShadowRect.height() / 2
+
+        if (mCircle) {
+            updateRadii(radius = mShadowRect.height() / 2)
         } else {
-            Math.min(mShadowRect.height() / 2, mRadius / 4)
+            val minRadius = Math.min(mShadowRect.width(), mShadowRect.height())
+            updateRadii(minRadius = minRadius / 2, scale = 0.25f)
         }
-        canvas.drawRoundRect(mShadowRect, tempRadius, tempRadius, mShadowPaint)
+
+        mPath.reset()
+        mPath.addRoundRect(mShadowRect, mRadii, Path.Direction.CCW)
+        canvas.drawPath(mPath, mShadowPaint)
+
         return output
+    }
+
+    private fun updateRadii(radius: Float = 0f, minRadius: Float = 0f, scale: Float = 1f) {
+        var leftTopRadius = if (radius > 0) {
+            radius
+        } else {
+            mLeftTopRadius
+        }
+        var leftBottomRadius = if (radius > 0) {
+            radius
+        } else {
+            mLeftBottomRadius
+        }
+        var rightTopRadius = if (radius > 0) {
+            radius
+        } else {
+            mRightTopRadius
+        }
+        var rightBottomRadius = if (radius > 0) {
+            radius
+        } else {
+            mRightBottomRadius
+        }
+
+        leftTopRadius *= scale
+        leftBottomRadius *= scale
+        rightTopRadius *= scale
+        rightBottomRadius *= scale
+
+        if (minRadius > 0) {
+            leftTopRadius = Math.min(leftTopRadius, minRadius)
+            leftBottomRadius = Math.min(leftBottomRadius, minRadius)
+            rightTopRadius = Math.min(rightTopRadius, minRadius)
+            rightBottomRadius = Math.min(rightBottomRadius, minRadius)
+        }
+
+        mRadii[0] = leftTopRadius
+        mRadii[1] = leftTopRadius
+        mRadii[2] = rightTopRadius
+        mRadii[3] = rightTopRadius
+        mRadii[4] = rightBottomRadius
+        mRadii[5] = rightBottomRadius
+        mRadii[6] = leftBottomRadius
+        mRadii[7] = leftBottomRadius
     }
 
 }

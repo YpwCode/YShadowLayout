@@ -13,7 +13,7 @@
         android:visibility="visible"
         app:layout_constraintTop_toTopOf="parent"
         app:tbar_bg="#ffffff00"
-        app:tbar_centerStr="包含侵入状态栏-颜色"
+        app:tbar_centerStr="圆角阴影"
         app:tbar_rightShow="true"
         app:tbar_rightStr="123" />
 
@@ -28,248 +28,170 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clipChildren="false"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="@dimen/sw_345"
-                android:layout_height="@dimen/sw_93"
-                android:layout_marginTop="@dimen/sw_15"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <com.ypw.code.view.ShadowLayout
-                    android:layout_width="@dimen/sw_375"
-                    android:layout_height="@dimen/sw_123"
-                    android:padding="@dimen/sw_15"
-                    android:translationY="@dimen/sw_m15"
-                    android:visibility="visible"
-                    app:shadow_limit="@dimen/sw_15"
-                    app:shadow_radius="@dimen/sw_15">
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#f0ff00ff" />
-
-                </com.ypw.code.view.ShadowLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="@dimen/sw_345"
-                android:layout_height="@dimen/sw_93"
-                android:layout_marginTop="@dimen/sw_15"
-                android:clipChildren="false"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <com.ypw.code.view.ShadowLayout
-                    android:layout_width="@dimen/sw_375"
-                    android:layout_height="@dimen/sw_123"
-                    android:translationY="@dimen/sw_m15"
-                    android:visibility="visible"
-                    app:shadow_circle="true"
-                    app:shadow_limit="@dimen/sw_15"
-                    app:shadow_marginBottom="@dimen/sw_1"
-                    app:shadow_marginLeft="@dimen/sw_1"
-                    app:shadow_marginRight="@dimen/sw_1"
-                    app:shadow_marginTop="@dimen/sw_1"
-                    app:shadow_radius="@dimen/sw_15">
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#00ff00ff" />
-
-                </com.ypw.code.view.ShadowLayout>
-
-            </LinearLayout>
-
             <com.ypw.code.view.ShadowLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/sw_15"
-                android:layout_marginTop="@dimen/sw_18_5"
-                android:layout_marginEnd="@dimen/sw_15"
-                app:shadow_bgColor="@color/colorPrimary"
-                app:shadow_bgGradientAngle="a270"
-                app:shadow_bgGradientEndColor="@color/colorAccent"
-                app:shadow_bgGradientStartColor="#ff0000"
-                app:shadow_bgUseGradient="true"
-                app:shadow_color="#c0c0c0"
-                app:shadow_limit="@dimen/sw_5"
-                app:shadow_marginLeft="@dimen/sw_32_5"
-                app:shadow_marginRight="@dimen/sw_32_5"
-                app:shadow_radius="@dimen/sw_5"
-                app:shadow_shadowOffsetY="@dimen/sw_5"
-                app:shadow_showLeftShadow="false"
-                app:shadow_showRightShadow="false"
-                app:shadow_showTopShadow="false">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/sw_25"
-                    android:text="下阴影, 设置左右 Margin"
-                    android:textColor="@color/white" />
-
-            </com.ypw.code.view.ShadowLayout>
-
-            <com.ypw.code.view.ShadowLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/sw_15"
-                android:layout_marginTop="@dimen/sw_10"
-                android:layout_marginEnd="@dimen/sw_15"
-                app:shadow_bgColor="@color/colorPrimary"
-                app:shadow_color="#c0c0c0"
-                app:shadow_limit="@dimen/sw_5"
-                app:shadow_marginBottom="@dimen/sw_3"
-                app:shadow_marginTop="@dimen/sw_3"
-                app:shadow_radius="@dimen/sw_5"
-                app:shadow_shadowOffsetX="@dimen/sw_5"
-                app:shadow_showBottomShadow="false"
-                app:shadow_showLeftShadow="false"
-                app:shadow_showRightShadow="true"
-                app:shadow_showTopShadow="false">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/sw_25"
-                    android:text="右阴影, 设置上下 Margin"
-                    android:textColor="@color/white" />
-
-            </com.ypw.code.view.ShadowLayout>
-
-            <com.ypw.code.view.ShadowLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/sw_300"
-                android:layout_marginStart="@dimen/sw_15"
-                android:layout_marginTop="@dimen/sw_18_5"
-                android:layout_marginEnd="@dimen/sw_15"
-                app:shadow_bgColor="#FF26264A"
-                app:shadow_bgGradientEndColor="#FF26264A"
-                app:shadow_bgGradientStartColor="#FF120E1E"
-                app:shadow_bgUseGradient="true"
-                app:shadow_color="#FF26264A"
+                app:shadow_color="@color/colorPrimaryDark"
                 app:shadow_limit="@dimen/sw_15"
-                app:shadow_marginLeft="@dimen/sw_32_5"
-                app:shadow_marginRight="@dimen/sw_32_5"
-                app:shadow_radius="@dimen/sw_15"
-                app:shadow_shadowOffsetX="@dimen/sw_0"
-                app:shadow_shadowOffsetY="@dimen/sw_15"
-                app:shadow_showBottomShadow="true"
-                app:shadow_showLeftShadow="false"
-                app:shadow_showRightShadow="false"
-                app:shadow_showTopShadow="false">
+                app:shadow_radius="@dimen/sw_15">
 
-                <View
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/sw_80"
+                    android:background="@color/colorPrimaryDark"
+                    android:gravity="center"
+                    android:text="child 圆角裁剪"
+                    android:textColor="@color/white" />
+
+            </com.ypw.code.view.ShadowLayout>
+
+            <com.ypw.code.view.ShadowLayout
+                android:layout_width="@dimen/sw_375"
+                android:layout_height="@dimen/sw_80"
+                android:layout_marginTop="@dimen/sw_m15"
+                app:shadow_limit="@dimen/sw_15"
+                app:shadow_radius="@dimen/sw_15">
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#00ff00ff"
-                    android:visibility="visible" />
+                    android:gravity="center"
+                    android:text="阴影长度 15, 圆角 15, margin 负值阴影重叠" />
 
             </com.ypw.code.view.ShadowLayout>
 
             <com.ypw.code.view.ShadowLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/sw_10">
+                android:layout_width="@dimen/sw_375"
+                android:layout_height="@dimen/sw_80"
+                app:shadow_leftTopRadius="@dimen/sw_15"
+                app:shadow_limit="@dimen/sw_15">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/sw_80"
-                    android:paddingTop="@dimen/sw_15"
-                    android:paddingEnd="@dimen/sw_80"
-                    android:paddingBottom="@dimen/sw_15"
-                    android:text="默认状态" />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="左上圆角 15" />
 
             </com.ypw.code.view.ShadowLayout>
 
             <com.ypw.code.view.ShadowLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/sw_10"
-                app:shadow_radius="@dimen/sw_20">
+                android:layout_width="@dimen/sw_375"
+                android:layout_height="@dimen/sw_80"
+                app:shadow_circle="true"
+                app:shadow_limit="@dimen/sw_15">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/sw_80"
-                    android:paddingTop="@dimen/sw_15"
-                    android:paddingEnd="@dimen/sw_80"
-                    android:paddingBottom="@dimen/sw_15"
-                    android:text="设置圆角" />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="圆角" />
 
             </com.ypw.code.view.ShadowLayout>
 
             <com.ypw.code.view.ShadowLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/sw_150"
-                android:layout_marginTop="@dimen/sw_10"
-                app:shadow_bgColor="@color/colorAccent"
-                app:shadow_color="@color/colorPrimary"
-                app:shadow_limit="@dimen/sw_10"
-                app:shadow_radius="@dimen/sw_5"
-                app:shadow_shadowOffsetX="@dimen/sw_10"
+                android:layout_width="@dimen/sw_375"
+                android:layout_height="@dimen/sw_80"
+                app:shadow_circle="true"
+                app:shadow_color="#ff0000"
+                app:shadow_limit="@dimen/sw_15">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="阴影颜色: 红色" />
+
+            </com.ypw.code.view.ShadowLayout>
+
+            <com.ypw.code.view.ShadowLayout
+                android:layout_width="@dimen/sw_375"
+                android:layout_height="@dimen/sw_80"
+                app:shadow_bgColor="#ffff00"
+                app:shadow_circle="true"
+                app:shadow_color="#ff0000"
+                app:shadow_limit="@dimen/sw_15">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="背景颜色: 黄色" />
+
+            </com.ypw.code.view.ShadowLayout>
+
+            <com.ypw.code.view.ShadowLayout
+                android:layout_width="@dimen/sw_375"
+                android:layout_height="@dimen/sw_80"
+                app:shadow_bgColor="#ffff00"
+                app:shadow_color="#ff0000"
+                app:shadow_limit="@dimen/sw_15"
+                app:shadow_showLeftShadow="false"
+                app:shadow_showTopShadow="false">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="隐藏上阴影/左阴影" />
+
+            </com.ypw.code.view.ShadowLayout>
+
+            <com.ypw.code.view.ShadowLayout
+                android:layout_width="@dimen/sw_375"
+                android:layout_height="wrap_content"
+                app:shadow_bgColor="#ffff00"
+                app:shadow_color="#ff0000"
+                app:shadow_limit="@dimen/sw_15"
+                app:shadow_shadowOffsetX="@dimen/sw_15"
                 app:shadow_shadowOffsetY="@dimen/sw_10">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/sw_80"
-                    android:layout_marginTop="@dimen/sw_5"
-                    android:layout_marginEnd="@dimen/sw_80"
-                    android:layout_marginBottom="@dimen/sw_5"
-                    android:text="偏移 X / Y"
-                    android:textColor="@color/white" />
+                    android:gravity="center"
+                    android:padding="@dimen/sw_15"
+                    android:text="阴影偏移: x15, y10" />
+
+            </com.ypw.code.view.ShadowLayout>
+
+            <com.ypw.code.view.ShadowLayout
+                android:layout_width="@dimen/sw_375"
+                android:layout_height="wrap_content"
+                app:shadow_bgColor="#ffff00"
+                app:shadow_color="#ff0000"
+                app:shadow_limit="@dimen/sw_15"
+                app:shadow_marginLeft="@dimen/sw_15"
+                app:shadow_marginRight="@dimen/sw_15"
+                app:shadow_shadowOffsetY="@dimen/sw_10"
+                app:shadow_showTopShadow="false">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/sw_15"
+                    android:text="隐藏上阴影, 阴影偏移: y10, 左右阴影 margin 15" />
 
             </com.ypw.code.view.ShadowLayout>
 
             <com.ypw.code.view.ShadowLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/sw_10"
-                app:shadow_bgColor="@color/colorAccent"
-                app:shadow_color="@color/colorPrimary"
-                app:shadow_limit="@dimen/sw_10"
-                app:shadow_radius="@dimen/sw_5">
+                app:shadow_bgGradientAngle="a45"
+                app:shadow_color="@color/colorAccent"
+                app:shadow_bgGradientEndColor="@color/colorAccent"
+                app:shadow_bgGradientStartColor="#ff0000"
+                app:shadow_bgUseGradient="true"
+                app:shadow_limit="@dimen/sw_15">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/sw_80"
-                    android:layout_marginTop="@dimen/sw_5"
-                    android:layout_marginEnd="@dimen/sw_80"
-                    android:layout_marginBottom="@dimen/sw_5"
-                    android:text="默认状态"
-                    android:textColor="@color/white" />
-
-            </com.ypw.code.view.ShadowLayout>
-
-            <com.ypw.code.view.ShadowLayout
-                android:layout_width="@dimen/sw_150"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/sw_10"
-                app:shadow_bgColor="@color/colorPrimary"
-                app:shadow_color="#FF0000"
-                app:shadow_limit="@dimen/sw_10"
-                app:shadow_radius="@dimen/sw_5"
-                app:shadow_showLeftShadow="false"
-                app:shadow_showTopShadow="false">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/sw_80"
-                    android:layout_marginTop="@dimen/sw_5"
-                    android:layout_marginEnd="@dimen/sw_80"
-                    android:layout_marginBottom="@dimen/sw_5"
-                    android:text="隐藏左 / 右 / 上"
+                    android:padding="@dimen/sw_25"
+                    android:text="背景渐变, angle: 45"
                     android:textColor="@color/white" />
 
             </com.ypw.code.view.ShadowLayout>
