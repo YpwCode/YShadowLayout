@@ -309,61 +309,7 @@ class ShadowLayout(context: Context, attrs: AttributeSet? = null) : FrameLayout(
      */
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        onDrawShadow(canvas)
         onDrawBg(canvas)
-    }
-
-    private fun onDrawShadow(canvas: Canvas) {
-        val shadowWidth = width
-        val shadowHeight = height
-        val dx = mShadowOffsetX
-        val dy = mShadowOffsetY
-
-        var _ol = ol.toFloat()
-        var _or = or.toFloat()
-        var _ot = ot.toFloat()
-        var _ob = ob.toFloat()
-
-        _ol += if (!mShowLeftShadow) {
-            mShadowLength
-        } else {
-            0f
-        }
-        _or += if (!mShowRightShadow) {
-            mShadowLength
-        } else {
-            0f
-        }
-        _ot += if (!mShowTopShadow) {
-            mShadowLength
-        } else {
-            0f
-        }
-        _ob += if (!mShowBottomShadow) {
-            mShadowLength
-        } else {
-            0f
-        }
-
-        mShadowRect.set(_ol, _ot, shadowWidth - _or, shadowHeight - _ob)
-        mShadowRect.top += mShadowMarginTop
-        mShadowRect.bottom -= mShadowMarginBottom
-        mShadowRect.left += mShadowMarginLeft
-        mShadowRect.right -= mShadowMarginRight
-
-        // * 0.8 避免边缘出现明显分界线
-        mShadowPaint.setShadowLayer(mShadowLength * 0.8f, dx, dy, mShadowColor)
-
-        if (mCircle) {
-            updateRadii(radius = mShadowRect.height() / 2)
-        } else {
-            val minRadius = Math.min(mShadowRect.width(), mShadowRect.height())
-            updateRadii(minRadius = minRadius / 2)
-        }
-
-        mPath.reset()
-        mPath.addRoundRect(mShadowRect, mRadii, Path.Direction.CCW)
-        canvas.drawPath(mPath, mShadowPaint)
     }
 
     private fun onDrawBg(canvas: Canvas) {
@@ -383,12 +329,12 @@ class ShadowLayout(context: Context, attrs: AttributeSet? = null) : FrameLayout(
         canvas.drawPath(mPath, mBgPaint)
     }
 
-//    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-//        super.onSizeChanged(w, h, oldw, oldh)
-//        if (w > 0 && h > 0) {
-//            setBackgroundCompat(w, h)
-//        }
-//    }
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        super.onSizeChanged(w, h, oldw, oldh)
+        if (w > 0 && h > 0) {
+            setBackgroundCompat(w, h)
+        }
+    }
 
     private fun setBackgroundCompat(w: Int, h: Int) {
         val bitmap = createShadowBitmap(w, h)
