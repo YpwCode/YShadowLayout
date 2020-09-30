@@ -286,7 +286,7 @@ class ShadowLayout(context: Context, attrs: AttributeSet? = null) : FrameLayout(
     }
 
     /**
-     * childView 圆角限制
+     * childView 圆角裁剪
      */
     override fun drawChild(canvas: Canvas, child: View?, drawingTime: Long): Boolean {
         val count = canvas.saveLayer(null, null, Canvas.ALL_SAVE_FLAG)
