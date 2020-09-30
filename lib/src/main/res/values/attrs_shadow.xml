@@ -11,15 +11,15 @@
         <attr name="shadow_rightTopRadius" format="dimension" />
         <attr name="shadow_leftBottomRadius" format="dimension" />
         <attr name="shadow_rightBottomRadius" format="dimension" />
-        <attr name="shadow_limit" format="dimension" />
+        <attr name="shadow_shadowLength" format="dimension" />
         <attr name="shadow_shadowOffsetX" format="dimension" />
         <attr name="shadow_shadowOffsetY" format="dimension" />
-        <attr name="shadow_color" format="color" />
+        <attr name="shadow_shadowColor" format="color" />
         <attr name="shadow_bgColor" format="color" />
-        <attr name="shadow_marginLeft" format="dimension" />
-        <attr name="shadow_marginRight" format="dimension" />
-        <attr name="shadow_marginTop" format="dimension" />
-        <attr name="shadow_marginBottom" format="dimension" />
+        <attr name="shadow_shadowMarginLeft" format="dimension" />
+        <attr name="shadow_shadowMarginRight" format="dimension" />
+        <attr name="shadow_shadowMarginTop" format="dimension" />
+        <attr name="shadow_shadowMarginBottom" format="dimension" />
         <attr name="shadow_bgUseGradient" format="boolean" />
         <attr name="shadow_bgGradientStartColor" format="color" />
         <attr name="shadow_bgGradientEndColor" format="color" />

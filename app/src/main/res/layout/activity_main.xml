@@ -4,24 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:orientation="vertical">
 
     <com.ypw.code.view.title.YTitleBar
         android:id="@+id/tbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tbar_bg="#ffffff00"
-        app:tbar_centerStr="圆角阴影"
-        app:tbar_rightShow="true"
-        app:tbar_rightStr="123" />
+        app:tbar_centerStr="圆角阴影" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
+        android:layout_marginTop="-10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tbar">
 
@@ -34,8 +31,27 @@
             <com.ypw.code.view.ShadowLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:shadow_color="@color/colorPrimaryDark"
-                app:shadow_limit="@dimen/sw_15"
+                app:shadow_bgGradientAngle="a45"
+                app:shadow_bgGradientEndColor="@color/colorAccent"
+                app:shadow_bgGradientStartColor="#ff0000"
+                app:shadow_bgUseGradient="true"
+                app:shadow_shadowColor="@color/colorAccent"
+                app:shadow_shadowLength="@dimen/sw_15">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/sw_25"
+                    android:text="背景渐变, angle: 45"
+                    android:textColor="@color/white" />
+
+            </com.ypw.code.view.ShadowLayout>
+
+            <com.ypw.code.view.ShadowLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:shadow_shadowColor="@color/colorPrimaryDark"
+                app:shadow_shadowLength="@dimen/sw_15"
                 app:shadow_radius="@dimen/sw_15">
 
                 <TextView
@@ -52,7 +68,7 @@
                 android:layout_width="@dimen/sw_375"
                 android:layout_height="@dimen/sw_80"
                 android:layout_marginTop="@dimen/sw_m15"
-                app:shadow_limit="@dimen/sw_15"
+                app:shadow_shadowLength="@dimen/sw_15"
                 app:shadow_radius="@dimen/sw_15">
 
                 <TextView
@@ -67,7 +83,7 @@
                 android:layout_width="@dimen/sw_375"
                 android:layout_height="@dimen/sw_80"
                 app:shadow_leftTopRadius="@dimen/sw_15"
-                app:shadow_limit="@dimen/sw_15">
+                app:shadow_shadowLength="@dimen/sw_15">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -81,7 +97,7 @@
                 android:layout_width="@dimen/sw_375"
                 android:layout_height="@dimen/sw_80"
                 app:shadow_circle="true"
-                app:shadow_limit="@dimen/sw_15">
+                app:shadow_shadowLength="@dimen/sw_15">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -95,8 +111,8 @@
                 android:layout_width="@dimen/sw_375"
                 android:layout_height="@dimen/sw_80"
                 app:shadow_circle="true"
-                app:shadow_color="#ff0000"
-                app:shadow_limit="@dimen/sw_15">
+                app:shadow_shadowColor="#ff0000"
+                app:shadow_shadowLength="@dimen/sw_15">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -111,8 +127,8 @@
                 android:layout_height="@dimen/sw_80"
                 app:shadow_bgColor="#ffff00"
                 app:shadow_circle="true"
-                app:shadow_color="#ff0000"
-                app:shadow_limit="@dimen/sw_15">
+                app:shadow_shadowColor="#ff0000"
+                app:shadow_shadowLength="@dimen/sw_15">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -126,8 +142,8 @@
                 android:layout_width="@dimen/sw_375"
                 android:layout_height="@dimen/sw_80"
                 app:shadow_bgColor="#ffff00"
-                app:shadow_color="#ff0000"
-                app:shadow_limit="@dimen/sw_15"
+                app:shadow_shadowColor="#ff0000"
+                app:shadow_shadowLength="@dimen/sw_15"
                 app:shadow_showLeftShadow="false"
                 app:shadow_showTopShadow="false">
 
@@ -143,8 +159,8 @@
                 android:layout_width="@dimen/sw_375"
                 android:layout_height="wrap_content"
                 app:shadow_bgColor="#ffff00"
-                app:shadow_color="#ff0000"
-                app:shadow_limit="@dimen/sw_15"
+                app:shadow_shadowColor="#ff0000"
+                app:shadow_shadowLength="@dimen/sw_15"
                 app:shadow_shadowOffsetX="@dimen/sw_15"
                 app:shadow_shadowOffsetY="@dimen/sw_10">
 
@@ -161,10 +177,10 @@
                 android:layout_width="@dimen/sw_375"
                 android:layout_height="wrap_content"
                 app:shadow_bgColor="#ffff00"
-                app:shadow_color="#ff0000"
-                app:shadow_limit="@dimen/sw_15"
-                app:shadow_marginLeft="@dimen/sw_15"
-                app:shadow_marginRight="@dimen/sw_15"
+                app:shadow_shadowColor="#ff0000"
+                app:shadow_shadowLength="@dimen/sw_15"
+                app:shadow_shadowMarginLeft="@dimen/sw_15"
+                app:shadow_shadowMarginRight="@dimen/sw_15"
                 app:shadow_shadowOffsetY="@dimen/sw_10"
                 app:shadow_showTopShadow="false">
 
@@ -180,18 +196,18 @@
             <com.ypw.code.view.ShadowLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:shadow_bgGradientAngle="a45"
-                app:shadow_color="@color/colorAccent"
+                app:shadow_bgGradientAngle="a90"
                 app:shadow_bgGradientEndColor="@color/colorAccent"
                 app:shadow_bgGradientStartColor="#ff0000"
                 app:shadow_bgUseGradient="true"
-                app:shadow_limit="@dimen/sw_15">
+                app:shadow_shadowColor="@color/colorAccent"
+                app:shadow_shadowLength="@dimen/sw_15">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/sw_25"
-                    android:text="背景渐变, angle: 45"
+                    android:text="背景渐变, angle: 90"
                     android:textColor="@color/white" />
 
             </com.ypw.code.view.ShadowLayout>

@@ -11,7 +11,7 @@ import android.widget.FrameLayout
 /**
  * *************************
  * Ypw
- * ypwcode@163.com 
+ * ypwcode@163.com
  * 2020/9/30 9:54 AM
  * -------------------------
  * 参考: https://github.com/lihangleo2/ShadowLayout
@@ -25,7 +25,7 @@ class ShadowLayout(context: Context, attrs: AttributeSet? = null) : FrameLayout(
     private var mBgColor = 0
     private var mShadowColor = 0
     private var mShadowLength = 0f
-    private var mRadius = 0f
+    private var mRadius = -1f
     private var mShadowOffsetX = 0f
     private var mShadowOffsetY = 0f
     private var mShowLeftShadow = false
@@ -165,28 +165,28 @@ class ShadowLayout(context: Context, attrs: AttributeSet? = null) : FrameLayout(
             mShowRightShadow = array.getBoolean(R.styleable.ShadowLayout_shadow_showRightShadow, true)
             mShowBottomShadow = array.getBoolean(R.styleable.ShadowLayout_shadow_showBottomShadow, true)
             mShowTopShadow = array.getBoolean(R.styleable.ShadowLayout_shadow_showTopShadow, true)
-            mRadius = array.getDimension(R.styleable.ShadowLayout_shadow_radius, 0f)
+            mRadius = array.getDimension(R.styleable.ShadowLayout_shadow_radius, -1f)
             mCircle = array.getBoolean(R.styleable.ShadowLayout_shadow_circle, false)
             mLeftTopRadius = array.getDimension(R.styleable.ShadowLayout_shadow_leftTopRadius, 10f)
             mLeftBottomRadius = array.getDimension(R.styleable.ShadowLayout_shadow_leftBottomRadius, 10f)
             mRightTopRadius = array.getDimension(R.styleable.ShadowLayout_shadow_rightTopRadius, 10f)
             mRightBottomRadius = array.getDimension(R.styleable.ShadowLayout_shadow_rightBottomRadius, 10f)
-            mShadowLength = array.getDimension(R.styleable.ShadowLayout_shadow_limit, 10f)
+            mShadowLength = array.getDimension(R.styleable.ShadowLayout_shadow_shadowLength, 10f)
             mShadowOffsetX = array.getDimension(R.styleable.ShadowLayout_shadow_shadowOffsetX, 0f)
             mShadowOffsetY = array.getDimension(R.styleable.ShadowLayout_shadow_shadowOffsetY, 0f)
-            mShadowColor = array.getColor(R.styleable.ShadowLayout_shadow_color, Color.parseColor("#2A000000"))
+            mShadowColor = array.getColor(R.styleable.ShadowLayout_shadow_shadowColor, Color.parseColor("#2A000000"))
             mBgColor = array.getColor(R.styleable.ShadowLayout_shadow_bgColor, Color.WHITE)
-            mShadowMarginLeft = array.getDimension(R.styleable.ShadowLayout_shadow_marginLeft, 0f)
-            mShadowMarginRight = array.getDimension(R.styleable.ShadowLayout_shadow_marginRight, 0f)
-            mShadowMarginTop = array.getDimension(R.styleable.ShadowLayout_shadow_marginTop, 0f)
-            mShadowMarginBottom = array.getDimension(R.styleable.ShadowLayout_shadow_marginBottom, 0f)
+            mShadowMarginLeft = array.getDimension(R.styleable.ShadowLayout_shadow_shadowMarginLeft, 0f)
+            mShadowMarginRight = array.getDimension(R.styleable.ShadowLayout_shadow_shadowMarginRight, 0f)
+            mShadowMarginTop = array.getDimension(R.styleable.ShadowLayout_shadow_shadowMarginTop, 0f)
+            mShadowMarginBottom = array.getDimension(R.styleable.ShadowLayout_shadow_shadowMarginBottom, 0f)
             mUseGradient = array.getBoolean(R.styleable.ShadowLayout_shadow_bgUseGradient, mUseGradient)
             mGradientStartColor = array.getColor(R.styleable.ShadowLayout_shadow_bgGradientStartColor, 0)
             mGradientEndColor = array.getColor(R.styleable.ShadowLayout_shadow_bgGradientEndColor, 0)
             mGradientAngle = array.getInt(R.styleable.ShadowLayout_shadow_bgGradientAngle, 0)
             array.recycle()
 
-            if (mRadius > 0) {
+            if (mRadius >= 0) {
                 mLeftTopRadius = mRadius
                 mLeftBottomRadius = mRadius
                 mRightTopRadius = mRadius
@@ -309,6 +309,64 @@ class ShadowLayout(context: Context, attrs: AttributeSet? = null) : FrameLayout(
      */
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+        onDrawShadow(canvas)
+        onDrawBg(canvas)
+    }
+
+    private fun onDrawShadow(canvas: Canvas) {
+        val shadowWidth = width
+        val shadowHeight = height
+        val dx = mShadowOffsetX
+        val dy = mShadowOffsetY
+
+        var _ol = ol.toFloat()
+        var _or = or.toFloat()
+        var _ot = ot.toFloat()
+        var _ob = ob.toFloat()
+
+        _ol += if (!mShowLeftShadow) {
+            mShadowLength
+        } else {
+            0f
+        }
+        _or += if (!mShowRightShadow) {
+            mShadowLength
+        } else {
+            0f
+        }
+        _ot += if (!mShowTopShadow) {
+            mShadowLength
+        } else {
+            0f
+        }
+        _ob += if (!mShowBottomShadow) {
+            mShadowLength
+        } else {
+            0f
+        }
+
+        mShadowRect.set(_ol, _ot, shadowWidth - _or, shadowHeight - _ob)
+        mShadowRect.top += mShadowMarginTop
+        mShadowRect.bottom -= mShadowMarginBottom
+        mShadowRect.left += mShadowMarginLeft
+        mShadowRect.right -= mShadowMarginRight
+
+        // * 0.8 避免边缘出现明显分界线
+        mShadowPaint.setShadowLayer(mShadowLength * 0.8f, dx, dy, mShadowColor)
+
+        if (mCircle) {
+            updateRadii(radius = mShadowRect.height() / 2)
+        } else {
+            val minRadius = Math.min(mShadowRect.width(), mShadowRect.height())
+            updateRadii(minRadius = minRadius / 2)
+        }
+
+        mPath.reset()
+        mPath.addRoundRect(mShadowRect, mRadii, Path.Direction.CCW)
+        canvas.drawPath(mPath, mShadowPaint)
+    }
+
+    private fun onDrawBg(canvas: Canvas) {
         if (mUseGradient) {
             mBgPaint.shader = mShaderGradient
         }
@@ -325,12 +383,12 @@ class ShadowLayout(context: Context, attrs: AttributeSet? = null) : FrameLayout(
         canvas.drawPath(mPath, mBgPaint)
     }
 
-    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-        super.onSizeChanged(w, h, oldw, oldh)
-        if (w > 0 && h > 0) {
-            setBackgroundCompat(w, h)
-        }
-    }
+//    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+//        super.onSizeChanged(w, h, oldw, oldh)
+//        if (w > 0 && h > 0) {
+//            setBackgroundCompat(w, h)
+//        }
+//    }
 
     private fun setBackgroundCompat(w: Int, h: Int) {
         val bitmap = createShadowBitmap(w, h)
