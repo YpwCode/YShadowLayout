@@ -1,5 +1,7 @@
 # YShadowLayout
 
+[![](https://jitpack.io/v/YpwCode/YShadowLayout.svg)](https://jitpack.io/#YpwCode/YShadowLayout) [![](https://jitci.com/gh/YpwCode/YShadowLayout/svg)](https://jitci.com/gh/YpwCode/YShadowLayout)
+
 给子 View 添加阴影套装, 效果如下
 
 ![ShadowLayout](./image/ShadowLayout.jpg)
