@@ -6,6 +6,26 @@
 
 ![ShadowLayout](./image/ShadowLayout.jpg)
 
+## 使用方式
+
+**添加 Maven 库地址到项目根目录下的 build.gradle**
+```groovy
+allprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	}
+}
+```
+**添加依赖项**
+```groovy
+dependencies {
+        implementation 'com.github.YpwCode:YShadowLayout:1.0.0'
+}
+```
+
+## 说明
+
 | 属性 | 描述 |
 | :-- | :-- |
 | shadow_showLeftShadow | 左阴影是否显示 |
